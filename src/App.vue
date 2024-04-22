@@ -2,8 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const dataSlides = ref([]);
-let slideWidth = ref(450);
-let sliderWidth = ref(null)
+let slideWidth = ref(340);
 let test = ref(0)
 
 let count = ref(0);
@@ -65,28 +64,34 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="slider">
-    <div class="wrapper-slider" :style="`transform: translate(-${test}px);`">
-      <div
-        v-for="(slide, index) in dataSlides"
-        :key="slide.id"
-      >
-        <input type="checkbox" :id="slide.id" v-model="slide.isChecked" />
-        <label :for="slide.id">
-          <img :src="slide.download_url" alt="" :class="{ 'active': count === index}">
-        </label>
+  <section class="section-slider">
+    <div class="container">
+      <div class="slider-wrapper" :style="`transform: translate(-${test}px);`">
+        <div
+          v-for="(slide, index) in dataSlides"
+          :key="slide.id"
+          class="slide"
+        >
+          <input type="checkbox" class="checkbox-slide" :id="slide.id" v-model="slide.isChecked" />
+          <label :for="slide.id" class="heckbox-slide-label">
+            <img :src="slide.download_url" alt="" :class="{ 'active': count === index}">
+          </label>
+        </div>
+      </div>
+      <div class="btn-holder">
+        <button class="btn-slider" @click="prevSlide">Prev</button>
+        <button class="btn-slider" @click="nextSlide">Next</button>
+      </div>
+      <div class="slider-detail-block">
+        <div class="table-url" v-if="getImageUrlList.length">
+          <div class="table-url__cell" v-for="(imageUrl, index) in getImageUrlList" :key="index">
+            {{ imageUrl }}
+          </div>
+        </div>
+        <div v-else class="empty-table">Please choose image</div>
       </div>
     </div>
-  </div>
-  <div class="table-url">
-    <div class="table-url__cell" v-for="(imageUrl, index) in getImageUrlList" :key="index">
-      {{ imageUrl }}
-    </div>
-  </div>
-  <div class="btn-holder">
-    <button class="btn-slider" @click="prevSlide">Prev</button>
-    <button class="btn-slider" @click="nextSlide">Next</button>
-  </div>
+  </section>
 </template>
 
 <style scoped>
