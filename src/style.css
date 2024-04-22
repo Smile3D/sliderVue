@@ -71,3 +71,11 @@ img {
 .wrapper-slider {
   display: flex;
 }
+
+.table-url {
+  border: 1px solid #eee
+}
+
+.table-url__cell {
+  border: 1px solid #eee
+}
