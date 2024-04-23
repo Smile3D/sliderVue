@@ -39,7 +39,7 @@ onMounted(() => {
     <div class="container">
       <div class="title-block">
         <h2>Your slider</h2>
-        <p>Your slider Your sliderYour sliderYour sliderYour sliderYour sliderYour sliderYour slider</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
       </div>
       <div v-if="dataSlides.length">
         <BaseSlider :dataSlides="dataSlides" />
